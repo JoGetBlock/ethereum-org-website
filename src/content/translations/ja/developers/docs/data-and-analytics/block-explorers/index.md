@@ -14,10 +14,11 @@ sidebarDepth: 3
 ## サービス {#services}
 
 - [Etherscan](https://etherscan.io/) –_中国語、韓国語、ロシア語、日本語でも利用できます_
-- [Etherchain](https://www.etherchain.org/)
-- [Ethplorer](https://ethplorer.io/) –_中国語、スペイン語、フランス語、トルコ語、ロシア語、韓国語、ベトナム語でも利用できます_
+- [Beaconcha.in](https://beaconcha.in/)
 - [blockchair](https://blockchair.com/ethereum) –_スペイン語、フランス語、イタリア語、オランダ語、ポルトガル語、ロシア語、中国語、ペルシア語でも利用できます_
 - [Blockscout](https://blockscout.com/)
+- [Etherchain](https://www.etherchain.org/)
+- [Ethplorer](https://ethplorer.io/) –_中国語、スペイン語、フランス語、トルコ語、ロシア語、韓国語、ベトナム語でも利用できます_
 - [OKLink](https://www.oklink.com/eth)
 - [Otterscan](https://otterscan.io/)
 
@@ -127,7 +128,7 @@ sidebarDepth: 3
 
 一部のブロックデータは、イーサリアムのより包括的な健全性に関連します。
 
-- Total transations (合計トランザクション数) - イーサリアムの誕生以降のトランザクションの数
+- Total transactions (合計トランザクション数) - イーサリアムの誕生以降のトランザクションの数
 - Transactions per second (1 秒あたりのトランザクション数) - 1 秒以内に処理可能なトランザクションの数
 - ETH price (ETH 価格) - 1ETH の現在評価額
 - Total ETH supply (総 ETH 供給量) - 流通している ETH の数。ETH は、ブロックが作成されるごとにブロック報酬というかたちで新規に作成される
@@ -226,10 +227,11 @@ sidebarDepth: 3
 
 ## ブロックエクスプローラー {#block-explorers}
 
-- [Etherscan](https://etherscan.io/) - イーサリアムメインネット、Ropsten テストネット、Kovan テストネット、Rinkby テストネット、Goerli テストネットのデータを取得するために使用できるブロックエクスプローラー
+- [Etherscan](https://etherscan.io/) - イーサリアムメインネット、Goerli テストネットのデータを取得するために使用できるブロックエクスプローラー
+- [Beaconcha.in](https://beaconcha.in/) - イーサリアムメインネットと Goerli テストネットのオープンソースブロックエクスプローラー
+- [Blockchair](https://blockchair.com/ethereum) - 最もプライベートなイーサリアムエクスプローラー。 データのソートやフィルタリング(メンプール)も可能
 - [Etherchain](https://www.etherchain.org/) - イーサリアムメインネットのブロックエクスプローラー
 - [Ethplorer](https://ethplorer.io/) - イーサリアムメインネットと Kovan テストネットのトークンを中心としたブロックエクスプローラー
-- [Blockchair](https://blockchair.com/ethereum) - 最もプライベートなイーサリアムエクスプローラー。 データのソートやフィルタリング (メンプール) も可能
 
 ## 参考文献 {#further-reading}
 

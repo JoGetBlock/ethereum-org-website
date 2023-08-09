@@ -12,6 +12,8 @@ import Button from "./Button"
 // Data
 import events from "../data/community-events.json"
 
+// Utils
+import { trackCustomEvent } from "../utils/matomo"
 
 interface ICommunityEventData {
   title: string
@@ -90,6 +92,11 @@ const UpcomingEventsList: React.FC<IProps> = () => {
   const loadMoreEvents = () => {
     setMaxRange((counter) => counter + eventsPerLoad)
     setIsVisible(maxRange + eventsPerLoad <= orderedUpcomingEvents.length)
+    trackCustomEvent({
+      eventCategory: "more events button",
+      eventAction: "click",
+      eventName: "load more",
+    })
   }
 
   if (orderedUpcomingEvents.length === 0) {
@@ -111,10 +118,22 @@ const UpcomingEventsList: React.FC<IProps> = () => {
         position="relative"
         padding="0 10px"
         transition="all 0.4s ease"
-        _before={{ content: '""', position: "absolute", width: "3px", height: "full", background: "primary", 
-          top: 0, left: "50%" }}
-        _after={{ content: '""', display: "table", width: "100%", clear: "both" }}
-        >      
+        _before={{
+          content: '""',
+          position: "absolute",
+          width: "3px",
+          height: "full",
+          background: "primary.base",
+          top: 0,
+          left: "50%",
+        }}
+        _after={{
+          content: '""',
+          display: "table",
+          width: "100%",
+          clear: "both",
+        }}
+      >
         {orderedUpcomingEvents
           ?.slice(0, maxRange)
           .map(({ title, to, formattedDetails, date, location }, idx) => {
@@ -136,7 +155,7 @@ const UpcomingEventsList: React.FC<IProps> = () => {
         justifyContent="center"
         maxWidth="620px"
         marginTop="5"
-        >
+      >
         {isVisible && (
           <Button onClick={loadMoreEvents}>
             <Translation id="page-community-upcoming-events-load-more" />

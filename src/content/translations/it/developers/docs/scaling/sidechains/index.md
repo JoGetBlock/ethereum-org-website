@@ -2,13 +2,12 @@
 title: Sidechain
 description: Un'introduzione alle sidechain come soluzione di ridemensionamento attualmente utilizzato dalla community di Ethereum.
 lang: it
-incomplete: true
 sidebarDepth: 3
 ---
 
 Una sidechain è una blockchain separata eseguita in modo indipendente da Ethereum ed è connessa alla Rete principale di Ethereum da un ponte bidirezionale. Le sidechain possono avere parametri del blocco e [algoritmi di consenso](/developers/docs/consensus-mechanisms/) separati, spesso progettati per l'elaborazione efficiente delle transazioni. Usare una sidechain comporta compromessi, però, poiché non eredita le proprietà di sicurezza di Ethereum. A differenza dalle [soluzioni di ridimensionamento del livello 2](/layer-2/), le sidechain non ri-pubblicano i cambiamenti di stato e i dati della transazione nella Rete principale di Ethereum.
 
-Inoltre, le sidechain sacrificano alcune misure di decentralizzazione o di sicurezza per ottenere un volume elevato ([trilemma di scalabilità](https://vitalik.ca/general/2021/05/23/scaling.html)). Tuttavia, Ethereum, si impegna nel ridimensionamento senza compromettere la decentralizzazione e la sicurezza come definito nella [dichiarazione della vision](/upgrades/vision/) per gli aggiornamenti.
+Inoltre, le sidechain sacrificano alcune misure di decentralizzazione o di sicurezza per ottenere un volume elevato ([trilemma di scalabilità](https://vitalik.ca/general/2021/05/23/scaling.html)). Tuttavia, Ethereum, si impegna nel ridimensionamento senza compromettere la decentralizzazione e la sicurezza come definito nella [dichiarazione della vision](/roadmap/vision/) per gli aggiornamenti.
 
 ## Come funzionano le sidechain? {#how-do-sidechains-work}
 
@@ -19,7 +18,7 @@ Le sidechain sono blockchain indipendenti, con cronologie, tabelle di marcia di 
 Una delle qualità che rendono uniche le sidechain (ossia diverse da Ethereum), è l'algoritmo di consenso utilizzato. Le sidechain non si affidano a Ethereum per il consenso e possono scegliere protocolli di consenso alternativi adatti alle loro esigenze. Alcuni esempi di algoritmi di consenso usati sulle sidechain includono:
 
 - [Proof of Authority](https://wikipedia.org/wiki/Proof_of_authority)
-- [proof-of-stake delegato](https://en.bitcoinwiki.org/wiki/DPoS)
+- [proof-of-stake delegato](https://en.bitcoin.it/wiki/Delegated_proof_of_stake)
 - [Tolleranza ai guasti bizantini](https://decrypt.co/resources/byzantine-fault-tolerance-what-is-it-explained).
 
 Come Ethereum, le sidechain hanno nodi di convalida che verificano ed elaborano le transazioni, producono blocchi e memorizzano lo stato della blockchain. I validatori sono inoltre responsabili del mantenimento del consenso lungo la rete e della sua protezione da attacchi malevoli.
@@ -65,10 +64,10 @@ Diversi progetti forniscono implementazioni di sidechain che puoi integrare nell
 - [Skale](https://skale.network/)
 - [Gnosis Chain (in precedenza xDai)](https://www.gnosischain.com/)
 - [Rete di Loom](https://loomx.io/)
+- [Metis Andromeda](https://www.metis.io/)
 
 ## Letture consigliate {#further-reading}
 
-- [EthHub on sidechains](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/sidechains/)
 - [Scaling Ethereum dapps through Sidechains](https://medium.com/loom-network/dappchains-scaling-ethereum-dapps-through-sidechains-f99e51fff447) _8 feb 2018 - Georgios Konstantopoulos_
 
 _Conosci una risorsa della community che ti è stata utile? Modifica questa pagina e aggiungila!_

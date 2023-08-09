@@ -96,7 +96,7 @@ contract VendingMachine {
 
 バグ報奨金プログラムを設けることは、外部コードレビューを実施するためのもう一つのアプローチです。 バク報奨金とは、アプリケーション内の脆弱性を発見した個人 (通常はホワイトハットハッカー) に与えられる金銭的な報酬です。
 
-バグ報奨金プログラムが適切に機能すれば、ハッカーコミュニティのメンバーは重大な欠陥がないかコードを検査することでインセンティブを得ることができます。 実例としては「無限貨幣バグ」があります。これにより、イーサリアム上で動作している[オプティミズム](https://www.optimism.io/)という[レイヤー 2 プロトコル](https://ethereum.org/en/layer-2/)で、攻撃者が無限にイーサ (Ether) を発行できてしまうというものでした。 幸運なことに、ホワイトハットハッカーは[その欠陥](https://www.saurik.com/optimism.html)を発見しチームに通知したため、[その過程で多額の報酬を得ました](https://cryptoslate.com/critical-bug-in-ethereum-l2-optimism-2m-bounty-paid/)。
+バグ報奨金プログラムが適切に機能すれば、ハッカーコミュニティのメンバーは重大な欠陥がないかコードを検査することでインセンティブを得ることができます。 実例としては「無限貨幣バグ」があります。これにより、イーサリアム上で動作している[オプティミズム](https://www.optimism.io/)という[レイヤー 2 プロトコル](/layer-2/)で、攻撃者が無限にイーサ (Ether) を発行できてしまうというものでした。 幸運なことに、ホワイトハットハッカーは[その欠陥](https://www.saurik.com/optimism.html)を発見しチームに通知したため、[その過程で多額の報酬を得ました](https://cryptoslate.com/critical-bug-in-ethereum-l2-optimism-2m-bounty-paid/)。
 
 バグ報奨金プログラムの報酬額を、危機にさらされている資金の額に比例して設定すると、有効な戦略となります。 「[バグ報奨金スケール](https://medium.com/immunefi/a-defi-security-standard-the-scaling-bug-bounty-9b83dfdc1ba7)」と呼ばれるこのアプローチは、脆弱性を悪用するのではなく、責任をもって開示するように、個人に金銭的なインセンティブを与えるものです。
 
@@ -448,7 +448,7 @@ DEX の価格は正確であることが多く、これは市場の均衡を取�
 
 オラクルの改ざんを回避するための最小要件としては、単一障害点を避けるために複数のソースから情報を照会する分散型オラクルネットワークを使用することです。 ほとんどの場合、分散型オラクルにはオラクルノードに正しい情報を報告するよう促す暗号経済的なインセンティブが組み込まれており、集中型オラクルよりも安全性が高くなっています。
 
-オンチェーンオラクルに資産価格を照会する場合は、時間加重平均価格 (TWAP) メカニズムを実装しているものを使用することを検討してください。 [TWAP オラクル](https://docs.uniswap.org/protocol/V2/concepts/core-concepts/oracles)は、ある資産の価格を 2 つの異なる時点 (修正可能) で照会し、得られた平均値に基づいて現在価格を計算します。 長い期間を選択することで、直前に行われた大量の注文が資産価格に影響を与えることができないため、価格の不正操作からプロトコルを保護します。
+オンチェーンオラクルに資産価格を照会する場合は、時間加重平均価格(TWAP)メカニズムを実装しているものを使用することを検討してください。 [TWAP オラクル](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles)は、ある資産の価格を 2 つの異なる時点(修正可能)で照会し、得られた平均値に基づいて現在価格を計算します。 長い期間を選択することで、直前に行われた大量の注文が資産価格に影響を与えることができないため、価格の不正操作からプロトコルを保護します。
 
 ## デペロッパー向けスマートコントラクト・セキュリティリソース {#smart-contract-security-resources-for-developers}
 
@@ -460,7 +460,11 @@ DEX の価格は正確であることが多く、これは市場の均衡を取�
 
 - **[スマートコントラクト監査サービス](/developers/docs/smart-contracts/testing/#smart-contract-auditing-services)** - _イーサリアム開発プロジェクト向けのスマートコントラクト監査サービスを提供する企業のリスト。_
 
-- **[バグ報奨金プラットフォーム](https://ethereum.org/en/developers/docs/smart-contracts/testing/#bug-bounty-platforms)** - _バグ報奨金の調整と、スマートコントラクトの重大な脆弱性の責任ある開示へ報酬を与えるためのプラットフォーム。_
+- **[バグ報奨金プラットフォーム](/developers/docs/smart-contracts/testing/#bug-bounty-platforms)** - _バグ報奨金の調整と、スマートコントラクトの重大な脆弱性の責任ある開示へ報酬を与えるためのプラットフォーム。_
+
+- **[Fork Checker](https://forkchecker.hashex.org/)** - _フォークされたコントラクトに関する利用可能なすべての情報を確認するための無料のオンラインツール。_
+
+- **[ABI Encoder](https://abi.hashex.org/)** - _Solidity コントラクトの関数とコンストラクタの引数をエンコードするための無料のオンラインサービス。_
 
 ### スマートコントラクト監視ツール {#smart-contract-monitoring-tools}
 
@@ -472,39 +476,67 @@ DEX の価格は正確であることが多く、これは市場の均衡を取�
 
 - **[OpenZeppelin Defender Admin](https://docs.openzeppelin.com/defender/admin)** - _アクセス制御、アップグレード、一時停止など、スマートコントラクトの管理を行うためのインターフェイス。_
 
-- **[Gnosis Safe](https://gnosis.io/safe/)** - _イーサリアム上で動作し、トランザクションが発生する前に最低人数 (N 人中の M 人) の承認が必要なスマートコントラクトウォレット。_
+- **[Safe](https://safe.global/)** - _イーサリアム上で動作し、トランザクションが発生する前に最低人数(N 人中の M 人)の承認が必要なスマートコントラクトウォレット。_
 
 - **[OpenZeppelin コントラクト](https://docs.openzeppelin.com/contracts/4.x/)** - _コントラクトの所有権、アップグレード、アクセス制御、ガバナンス、一時停止機能など、管理機能を実装するためのコントラクトライブラリ。_
 
-### スマートコントラクトの既知の脆弱性・悪用事例の公開情報
+### スマートコントラクト監査サービス {#smart-contract-auditing-services}
 
-{#common-smart contract-vulnerabilities-and-exploits}
+- **[ConsenSys Diligence](https://consensys.net/diligence/)** - _ブロックチェーンエコシステム全体のプロジェクトについて、プロトコルがローンチに適した状態にあり、ユーザーを保護するように構築されていることを確認するスマートコントラクト監査サービス_
 
-- **[ConsenSys: スマートコントラクトの既知の攻撃](https://consensys.github.io/smart-contract-best-practices/attacks/)** - _コントラクトの最重要な脆弱性を、ほとんどのケースでサンプルコード付きで初心者にもわかりやすく解説。_
+- **[CertiK](https://www.certik.com/)** - _スマートコントラクトとブロックチェーンネットワークに最先端の形式検証技術を使用する先駆的なブロックチェーンセキュリティ企業_
 
-- **[SWC レジストリ](https://swcregistry.io/)** - _イーサリアムスマートコントラクトに適用される共通脆弱性タイプ一覧 (CWE) アイテムの厳選リスト。_
+- **[Trail of Bits](https://www.trailofbits.com/)** - _セキュリティ研究と攻撃者のメンタリティを融合させ、リスクの低減とコードの堅牢化を図るサイバーセキュリティ企業_
 
-- **[Rekt](https://rekt.news/)** - _注目の暗号ハッキングやエクスプロイトを、詳細な事後分析レポートとともに定期的に更新して公開。_
+- **[PeckShield](https://peckshield.com/)** - _ブロックチェーンエコシステム全体のセキュリティ、プライバシー、ユーザビリティのための製品やサービスを提供するブロックチェーンセキュリティ企業_
+
+- **[QuantStamp](https://quantstamp.com/)** - _セキュリティおよびリスク評価サービスを通じて、ブロックチェーン技術の主流化を促進する監査サービス_
+
+- **[OpenZeppelin](https://www.openzeppelin.com/security-audits)** - _分散型システムのセキュリティ監査を提供するスマートコントラクトセキュリティ企業_
+
+- **[Runtime Verification](https://runtimeverification.com/)** - _スマートコントラクトと形式モデルを専門としたセキュリティ企業_
+
+- **[Hacken](https://hacken.io)** - _ブロックチェーンセキュリティへの 360 度アプローチをもたらすサイバーセキュリティ監査人_
+
+- **[Nethermind](https://nethermind.io/smart-contracts-audits)** - _ Solidity と Cairo の監査サービスにより、イーサリアムと Starknet 全体でスマートコントラクトの整合性とユーザーの安全を確保_
+
+- **[HashEx](https://hashex.org/)** - _HashEx は、ブロックチェーンとスマート コントラクトの監査に焦点を当てており、暗号通貨のセキュリティを確保するためのスマートコントラクト開発、侵入テスト、ブロックチェーンコンサルティングなどのサービスを提供_
+
+### バグ報奨プログラムプラットフォーム {#bug-bounty-platforms}
+
+- **[Immunefi](https://immunefi.com/)** - _スマートコントラクトと DeFi プロジェクトのバグ報奨プログラムのプラットフォーム。セキュリティ研究者がコードをレビューし、脆弱性を開示し、報酬を得て、暗号資産の安全性を強化_
+
+- **[HackerOne](https://www.hackerone.com/)** - _企業とペネトレーションテスターやサイバーセキュリティ研究者をつなぐ、脆弱性調整とバグ報奨プログラムのプラットフォーム_
+
+- **[HackenProof](https://hackenproof.com/)** - _ 暗号プロジェクト(DeFi、スマート コントラクト、ウォレット、CEX など)のエキスパートのバグ報奨金プラットフォーム。セキュリティプロフェッショナルはトリアージサービスを提供し、研究者は検証済みの関連バグレポートに対して報酬を獲得_
+
+### 既知のスマートコントラクトの脆弱性とエクスプロイトの公開 {#common-smart-contract-vulnerabilities-and-exploits}
+
+- **[ConsenSys: スマートコントラクトの既知の攻撃](https://consensys.github.io/smart-contract-best-practices/attacks/)** - _コントラクトの最も重要な脆弱性を、ほとんどのケースでサンプルコード付きで初心者にもわかりやすく解説_
+
+- **[SWC レジストリ](https://swcregistry.io/)** - _イーサリアムスマートコントラクトに該当する共通の脆弱性(CWE)項目の厳選リスト_
+
+- **[Rekt](https://rekt.news/)** - _注目の暗号ハッキングやエクスプロイトを、詳細な事後分析レポートとともに定期的に更新して公開_
 
 ### スマートコントラクトのセキュリティ学習課題 {#challenges-for-learning-smart-contract-security}
 
-- **[Awesome BlockSec CTF](https://github.com/blockthreat/blocksec-ctfs)** - _ブロックチェーンセキュリティの机上演習、課題、[Capture The Flag](https://www.webopedia.com/definitions/ctf-event/amp/)コンペやソリューション記事の厳選リスト。_
+- **[Awesome BlockSec CTF](https://github.com/blockthreat/blocksec-ctfs)** - _ブロックチェーンセキュリティの机上演習、課題、[Capture The Flag](https://www.webopedia.com/definitions/ctf-event/amp/)コンペやソリューション記事の厳選リスト_
 
-- **[Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/)** - _DeFi スマートコントラクトの攻撃的なセキュリティを学び、バグハンティングやセキュリティ監査のスキルを身につけるための机上演習。_
+- **[Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/)** - _DeFi スマートコントラクトの攻撃的なセキュリティを学び、バグハンティングやセキュリティ監査のスキルを身につけるための机上演習_
 
-- **[Ethernaut](https://ethernaut.openzeppelin.com/)** - _各レベルが「ハッキング」する必要のあるスマートコントラクトになっている、Web3/Solidity ベースの机上演習。_
+- **[Ethernaut](https://ethernaut.openzeppelin.com/)** - _各レベルでスマートコントラクトのハッキングが必要な Web3/Solidity ベースの机上演習_
 
-### スマートコントラクトのセキュリティを確保する最善の方法 {#smart-contract-security-best-practices}
+### スマートコントラクトのセキュリティのベストプラクティス {#smart-contract-security-best-practices}
 
-- **[ConsenSys: イーサリアムスマートコントラクトのセキュリティの最善の方法](https://consensys.github.io/smart-contract-best-practices/)** - _イーサリアムスマートコントラクトのセキュリティを確保するためのガイドラインの包括的なリスト。_
+- **[ConsenSys: イーサリアムスマートコントラクトのセキュリティのベストプラクティス](https://consensys.github.io/smart-contract-best-practices/)** - _イーサリアムスマートコントラクトのセキュリティのガイドラインの包括的リスト_
 
-- **[Nascent: シンプルセキュリティツールキット](https://github.com/nascentxyz/simple-security-toolkit)** - _スマートコントラクト開発のための、セキュリティに特化した実践的なガイドとチェックリストのコレクション。_
+- **[Nascent: シンプルセキュリティツールキット](https://github.com/nascentxyz/simple-security-toolkit)** - _スマートコントラクト開発のための、セキュリティを重視した実践的なガイドとチェックリスト集_
 
-- **[Solidity パターン](https://fravoll.github.io/solidity-patterns/)** - _スマート コントラクトプログラミング言語「Solidity」の安全なパターンと最善の方法に関して役立つ情報をまとめたもの。_
+- **[Solidity パターン](https://fravoll.github.io/solidity-patterns/)** - _スマート コントラクトプログラミング言語「Solidity」の安全なパターンとベストプラクティスの有用情報のまとめ_
 
-- **[Solidity ドキュメント: セキュリティ考慮事項](https://docs.soliditylang.org/en/v0.8.16/security-considerations.html)** - _Solidity で安全なスマートコントラクトを記述するためのガイドライン。_
+- **[Solidity ドキュメント: セキュリティ考慮事項](https://docs.soliditylang.org/en/v0.8.16/security-considerations.html)** - _Solidity で安全なスマートコントラクトを記述するためのガイドライン_
 
-- **[スマートコントラクトセキュリティ検証標準](https://github.com/securing/SCSVS)** - _デベロッパー、アーキテクト、セキュリティ評価者、ベンダー向けにスマートコントラクトのセキュリティを標準化するために作成された 14 部構成のチェックリスト。_
+- **[スマートコントラクトセキュリティ検証スタンダード](https://github.com/securing/SCSVS)** - _デベロッパー、アーキテクト、セキュリティ評価者、ベンダー向けにスマートコントラクトのセキュリティを標準化するために作成された 14 部構成のチェックリスト_
 
 ### スマートコントラクトのセキュリティに関するチュートリアル {#tutorials-on-smart-contract-security}
 

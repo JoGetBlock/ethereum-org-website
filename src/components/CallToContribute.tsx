@@ -1,4 +1,11 @@
-import { Flex, Heading, Icon, Show, Text, useToken } from "@chakra-ui/react"
+import {
+  Flex,
+  FlexProps,
+  Heading,
+  Icon,
+  Text,
+  useToken,
+} from "@chakra-ui/react"
 import { FaGithub } from "react-icons/fa"
 import React, { ReactNode } from "react"
 import Link from "./Link"
@@ -14,7 +21,10 @@ export type ChildOnlyType = {
   children: ReactNode
 }
 
-const ContentColumn = ({ children }: ChildOnlyType) => (
+const ContentColumn = (props: {
+  children: ReactNode
+  hideBelow?: FlexProps["hideBelow"]
+}) => (
   <Flex
     direction="column"
     flexGrow={1}
@@ -23,9 +33,8 @@ const ContentColumn = ({ children }: ChildOnlyType) => (
     p={4}
     color="text"
     textAlign={{ base: "center", lg: "left" }}
-  >
-    {children}
-  </Flex>
+    {...props}
+  />
 )
 
 const DescriptionParagraph = ({ children }: ChildOnlyType) => (
@@ -38,34 +47,33 @@ const CallToContribute: React.FC<IProps> = ({ editPath }) => {
   /**
    * TODO: After completion of the UI migration,
    * Remove this and pass the token value directly
-   * into the `above` prop of `Show`
+   * into the `hideBelow` prop
    */
   const largeBp = useToken("breakpoints", "lg")
 
   return (
     <Flex
+      as="aside"
       bg="ednBackground"
       align="center"
       mt={8}
       border="1px"
-      borderColor="primary"
+      borderColor="primary.base"
       borderRadius="base"
       boxShadow="inset 0 -2px 0 0 var(--eth-colors-primary400)"
     >
-      <Show above={largeBp}>
-        <ContentColumn>
-          ░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░ ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░
-          ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░ ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░
-          ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░ ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░
-          ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░ ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░
-          ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░ ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░
-          ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░ ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
-          ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░ ░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░
-          ░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░ ░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░
-          ░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░ ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░
-          ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░
-        </ContentColumn>
-      </Show>
+      <ContentColumn hideBelow={largeBp}>
+        ░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░ ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░
+        ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░ ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░
+        ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░ ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░
+        ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░ ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░
+        ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░ ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░
+        ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░ ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+        ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░ ░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░
+        ░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░ ░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░
+        ░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░ ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░
+        ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░
+      </ContentColumn>
       <ContentColumn>
         <Heading
           as="h2"
@@ -99,7 +107,13 @@ const CallToContribute: React.FC<IProps> = ({ editPath }) => {
         <ButtonLink
           to={editPath}
           leftIcon={
-            <Icon fill="background" w={6} h={6} as={FaGithub} name="github" />
+            <Icon
+              fill="background.base"
+              w={6}
+              h={6}
+              as={FaGithub}
+              name="github"
+            />
           }
         >
           <Translation id="page-calltocontribute-span" />

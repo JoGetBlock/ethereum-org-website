@@ -4,11 +4,9 @@ description: 有关使用WebSocket和Alchemy进行JSON-RPC请求并订阅事件�
 author: "Elan Halpern"
 lang: zh
 tags:
-  - "alchemy"
-  - "websockets"
+  - "Alchemy"
+  - "websocket"
   - "查询"
-  - "入门指南"
-  - "订阅"
   - "javascript"
 skill: beginner
 source: Alchemy 文档
@@ -33,7 +31,7 @@ published: 2020-12-01
 _注意：如果您有 Alchemy 帐户，则可以将`demo`替换成自己的 API 密钥。 [点击此处注册免费 Alchemy 帐户！](https://auth.alchemyapi.io/signup)_
 
 ```
-$ wscat -c wss://eth-mainnet.ws.alchemyapi.io/ws/demo
+wscat -c wss://eth-mainnet.ws.alchemyapi.io/ws/demo
 
 >  {"jsonrpc":  "2.0", "id": 0, "method":  "eth_gasPrice"}
 
@@ -65,7 +63,7 @@ web3.eth.getBlockNumber().then(console.log) // -> 7946893
 
 ### `eth_subscribe` {#eth-subscribe}
 
-为指定的事件创建新的订阅。 [详细了解`eth_subscribe`](https://docs.alchemyapi.io/documentation/alchemy-api-reference/json-rpc#eth_subscribe)。
+为指定的事件创建新的订阅。 [详细了解 `eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe)。
 
 #### 参数 {#parameters}
 

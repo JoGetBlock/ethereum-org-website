@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { Box, Flex, Heading, useColorModeValue } from "@chakra-ui/react"
-import { useIntl } from "react-intl"
+import { useI18next } from "gatsby-plugin-react-i18next"
 import Link, { navigate } from "./Link"
 import Emoji from "./Emoji"
 import Translation from "./Translation"
 import { isMobile } from "../utils/isMobile"
+import { Lang } from "../utils/languages"
 
 // Represent string as 32-bit integer
 const hashCode = (string: string): number => {
@@ -158,7 +159,7 @@ const GridItem: React.FC<IPropsGridItem> = ({
       gridColumnStart={isOpen ? columnNumber : `auto`}
       color={isOpen ? "black300" : "text"}
       cursor={isOpen ? `auto` : `pointer`}
-      background={isOpen ? color : "background"}
+      background={isOpen ? color : "background.base"}
       direction={{
         base: "column",
         sm: `${isOpen ? "column" : "row"}`,
@@ -267,14 +268,14 @@ export interface IProps {
 }
 
 const StablecoinBoxGrid: React.FC<IProps> = ({ items }) => {
-  const intl = useIntl()
+  const { language } = useI18next()
   const [indexOpen, setOpenIndex] = useState<number>(0)
 
   // TODO generalize
   const handleSelect = (idx: number): void => {
     setOpenIndex(idx)
     if (isMobile()) {
-      navigate(`/stablecoins/#type-${idx}`, intl)
+      navigate(`/stablecoins/#type-${idx}`, language as Lang)
     }
   }
 

@@ -1,4 +1,3 @@
-// Import libraries
 import React, { useMemo } from "react"
 import {
   Box,
@@ -9,41 +8,45 @@ import {
   Text,
   useRadio,
   useRadioGroup,
+  useToken,
 } from "@chakra-ui/react"
+import { useTranslation } from "gatsby-plugin-react-i18next"
 
-// Import types
+import Translation from "../Translation"
+
+import { TranslationKey } from "../../utils/translations"
+
 import { Question } from "../../types"
 
-// Interfaces
-export interface CustomRadioProps extends RadioProps {
+interface CustomRadioProps extends RadioProps {
   index: number
   label: string
 }
-export interface IProps {
+
+interface IProps {
   questionData: Question
   showAnswer: boolean
   handleSelection: (answerId: string) => void
   selectedAnswer: string | null
 }
 
-// Component
 const QuizRadioGroup: React.FC<IProps> = ({
   questionData,
   showAnswer,
   handleSelection,
   selectedAnswer,
 }) => {
+  const { t } = useTranslation()
   const { getRadioProps, getRootProps } = useRadioGroup({
     onChange: handleSelection,
   })
   const { prompt, answers, correctAnswerId } = questionData
 
   // Memoized values
-  const explanation = useMemo<string>(() => {
+  const explanation = useMemo<TranslationKey>(() => {
     if (!selectedAnswer) return ""
     return answers.filter(({ id }) => id === selectedAnswer)[0].explanation
   }, [selectedAnswer])
-
   const isSelectedCorrect = useMemo<boolean>(
     () => correctAnswerId === selectedAnswer,
     [selectedAnswer]
@@ -60,11 +63,13 @@ const QuizRadioGroup: React.FC<IProps> = ({
 
     // Memoized values
     const buttonBg = useMemo<string>(() => {
-      if (!state.isChecked) return "bodyInverted"
-      if (!showAnswer) return "primary"
-      if (!isSelectedCorrect) return "error"
-      return "success"
+      if (!state.isChecked) return "body.inverted"
+      if (!showAnswer) return "primary.base"
+      if (!isSelectedCorrect) return "error.base"
+      return "success.base"
     }, [state.isChecked, showAnswer, isSelectedCorrect])
+
+    const primaryBaseColor = useToken("colors", "primary.base")
 
     // Render CustomRadio component
     return (
@@ -79,10 +84,8 @@ const QuizRadioGroup: React.FC<IProps> = ({
           color={state.isChecked ? "white" : "text"}
           borderRadius="base"
           _hover={{
-            boxShadow: showAnswer ? "none" : "primary",
-            outline: showAnswer
-              ? "none"
-              : "1px solid var(--eth-colors-primary)",
+            boxShadow: showAnswer ? "none" : "primary.base",
+            outline: showAnswer ? "none" : `1px solid ${primaryBaseColor}`,
             cursor: showAnswer ? "default" : "pointer",
           }}
         >
@@ -92,11 +95,11 @@ const QuizRadioGroup: React.FC<IProps> = ({
               showAnswer
                 ? "white"
                 : state.isChecked
-                ? "primaryPressed"
+                ? "primary.pressed"
                 : "disabled"
             }
             _groupHover={{
-              bg: showAnswer ? "white" : "primaryPressed",
+              bg: showAnswer ? "white" : "primary.pressed",
             }}
             me={2}
           >
@@ -105,7 +108,11 @@ const QuizRadioGroup: React.FC<IProps> = ({
               fontWeight="700"
               fontSize="lg"
               color={
-                !showAnswer ? "white" : isSelectedCorrect ? "success" : "error"
+                !showAnswer
+                  ? "white"
+                  : isSelectedCorrect
+                  ? "success.base"
+                  : "error.base"
               }
             >
               {String.fromCharCode(97 + index).toUpperCase()}
@@ -120,9 +127,15 @@ const QuizRadioGroup: React.FC<IProps> = ({
   // Render QuizRadioGroup
   return (
     <Flex {...getRootProps()} direction="column" w="100%">
-      <Text fontWeight="700" fontSize="2xl" mb={6}>
-        {prompt}
+      <Text
+        textAlign={{ base: "center", md: "left" }}
+        fontWeight="700"
+        fontSize="2xl"
+        mb={6}
+      >
+        {t(prompt)}
       </Text>
+
       <Flex direction="column" gap={4}>
         {answers.map(({ id, label }, index) => {
           const display =
@@ -132,18 +145,19 @@ const QuizRadioGroup: React.FC<IProps> = ({
               key={id}
               display={display}
               index={index}
-              label={label}
+              label={t(label)}
               {...getRadioProps({ value: id })}
             />
           )
         })}
       </Flex>
+
       {showAnswer && (
         <Box mt={5}>
           <Text fontWeight="bold" mt={0} mb={2}>
-            Explanation
+            <Translation id="explanation" />
           </Text>
-          <Text m={0}>{explanation}</Text>
+          <Text m={0}>{t(explanation)}</Text>
         </Box>
       )}
     </Flex>

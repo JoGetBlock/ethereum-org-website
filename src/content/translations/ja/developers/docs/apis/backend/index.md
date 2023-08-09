@@ -32,6 +32,12 @@ lang: ja
 - [blockcypher.com](https://www.blockcypher.com/)
 - [ドキュメント](https://www.blockcypher.com/dev/ethereum/)
 
+**Blast by Bware Labs -** **_イーサリアムメインネットとテストネットのための分散型 API_**
+
+- [blastapi.io](https://blastapi.io/)
+- [ドキュメント](https://docs.blastapi.io)
+- [Discord](https://discord.com/invite/VPkWESgtvV)
+
 **Infura -** **_アズ・ア・サービス型のイーサリアム API_**
 
 - [infura.io](https://infura.io)
@@ -42,17 +48,29 @@ lang: ja
 
 - [cloudflare-eth.com](https://cloudflare-eth.com)
 
-**DataHub by Figment -** **_イーサリアムメインネットとテストネットを使用する Web3 API サービス _**
+**Coinbase Cloud Node -** **_ブロックチェーンインフラストラクチャ API_**
+
+- [Coinbase Cloud Node](https://www.coinbase.com/cloud/products/node)
+- [ドキュメント](https://docs.cloud.coinbase.com/node/reference/welcome-to-node)
+
+**Figment 社が提供する DataHub -** **_イーサリアムプロトコル(メインネットとテストネット)を使用した Web3 API サービス_**
 
 - [DataHub](https://www.figment.io/datahub)
 - [ドキュメント](https://docs.figment.io/introduction/what-is-datahub)
+
+**NFTPort -** **_イーサリアムデータとミント API_**
+
+- [nftport.xyz](https://www.nftport.xyz/)
+- [ドキュメント](https://docs.nftport.xyz/)
+- [GitHub](https://github.com/nftport/)
+- [Discord](https://discord.com/invite/K8nNrEgqhE)
 
 **Nodesmith -** **_イーサリアムメインネットとテストネットへの JSON-RPC API アクセス_**
 
 - [nodesmith.io](https://nodesmith.io/network/ethereum/)
 - [ドキュメント](https://nodesmith.io/docs/#/ethereum/apiRef)
 
-**Ethercluster -** **_ETH と ETC の両方をサポートする独自のイーサリアム API サービスを実行_**
+**Ethercluster -** **_ETH と ETC の両方をサポートする独自のイーサリアム API サービスの実行_**
 
 - [ethercluster.com](https://www.ethercluster.com/)
 
@@ -62,7 +80,7 @@ lang: ja
 - [ドキュメント](https://docs.chainstack.com)
 - [イーサリアム API リファレンス](https://docs.chainstack.com/api/ethereum/ethereum-api-reference)
 
-**QuickNode -** **_アズ・ア・サービス型のブロックチェーン・インフラストラクチャ_**
+**QuickNode -** **_アズ・ア・サービス型のブロックチェーンインフラストラクチャ_**
 
 - [quicknode.com](https://quicknode.com)
 - [ドキュメント](https://www.quicknode.com/docs)
@@ -86,7 +104,7 @@ lang: ja
 - [ドキュメント](https://rivet.cloud/docs/)
 - [GitHub](https://github.com/openrelayxyz/ethercattle-deployment)
 
-**Nethereum -** **_ブロックチェーンのためのオープンソースの .NET 統合ライブラリ_**
+**Nethereum -** **_オープンソースのブロックチェーン用.NET 統合ライブラリ_**
 
 - [GitHub](https://github.com/Nethereum/Nethereum)
 - [ドキュメント](http://docs.nethereum.com/en/latest/)
@@ -99,7 +117,7 @@ lang: ja
 - [ドキュメント](https://docs.tatum.io/)
 - [Discord](https://discord.gg/EDmW3kjTC9)
 
-**Watchdata -** **_イーサリアムブロックチェーンへのシンプルで信頼性の高い API アクセスを提供_**
+**Watchdata -** **_イーサリアムブロックチェーンへのシンプルで信頼性の高い API アクセス_**
 
 - [Watchdata](https://watchdata.io/)
 - [ドキュメント](https://docs.watchdata.io/)
@@ -112,9 +130,27 @@ lang: ja
 - [ドキュメント](https://docs.zmok.io/)
 - [Discord](https://discord.gg/fAHeh3ka6s)
 
+**NOWNodes - _フルノードとブロックエクスプローラー_**
+
+- [NOWNodes.io](https://nownodes.io/)
+- [ドキュメント](https://documenter.getpostman.com/view/13630829/TVmFkLwy#intro)
+
+**Moralis -** **_エンタープライズグレードの EVM API プロバイダ_**
+
+- [moralis.io](http://moralis.io)
+- [ドキュメンテーション](https://docs.moralis.io/)
+- [GitHub](https://github.com/MoralisWeb3)
+- [Discord](https://discord.com/invite/KYswaxwEtg)
+- [フォーラム](https://forum.moralis.io/)
+
+\*_GetBlock - Web3 開発のためのブロックチェーン・アズ・ア・サービス_
+
+- [GetBlock.io](https://getblock.io/)
+- [ドキュメンテーション](https://getblock.io/docs/)
+
 ## 参考文献 {#further-reading}
 
-_役に立つコミュニティリソースをご存知の場合は、 ページを編集して追加してください。_
+_イーサリアムを学ぶために利用したコミュニティリソースはありますか？ このページを編集して追加しましょう！_
 
 ## 関連トピック {#related-topics}
 
@@ -123,5 +159,5 @@ _役に立つコミュニティリソースをご存知の場合は、 ページ
 
 ## 関連チュートリアル {#related-tutorials}
 
-- [Javascript でイーサリアムブロックチェーンを使用するための Web3js のセットアップ](/developers/tutorials/set-up-web3js-to-use-ethereum-in-javascript/) _– プロジェクトで web3.js をセットアップするための手順。_
-- [JavaScript からスマートコントラクトを呼び出す](/developers/tutorials/calling-a-smart-contract-from-javascript/) _– Dai トークンを使用することで、JavaScript を使用してスマートコントラクト関数を呼び出す方法を確認できます。_
+- [Javascript でイーサリアムブロックチェーンを使用するための Web3js のセットアップ](/developers/tutorials/set-up-web3js-to-use-ethereum-in-javascript/) _– プロジェクトで web3.js をセットアップするための手順_
+- [JavaScript からスマートコントラクトの呼び出し](/developers/tutorials/calling-a-smart-contract-from-javascript/) _– Dai トークンを使った、JavaScript でスマートコントラクト機能の呼び出し方法_

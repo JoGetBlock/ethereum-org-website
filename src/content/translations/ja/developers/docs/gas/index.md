@@ -4,7 +4,7 @@ description:
 lang: ja
 ---
 
-イーサリアムネットワークにとってガスは切り離せないものです。 ガスは車にとってのガソリンのようにいイーサリアムを稼働させるための燃料として使われます。
+イーサリアムネットワークにとってガスは切り離せないものです。 ガスは車にとってのガソリンのようにイーサリアムを稼働させるための燃料として使われます。
 
 ## 前提知識 {#prerequisites}
 
@@ -91,13 +91,13 @@ Jordan が送金すると、1.000252 ETH が Jordan の口座から差し引か�
 
 ## EIP-1559 {#eip-1559}
 
-ロンドンアップグレードで[EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md)が導入されたことで、トランザクションフィーの仕組みは従来のガス代オークションよりも複雑になりましたが、ガス代の予測がしやすくなり、結果的にトランザクションフィー市場がより効率的になるというメリットがあります。 ユーザーはガスの市場価格(`baseFeePerGas`)以上の金額を支払うことなく、トランザクションの実行に支払う`maxFeePerGas`を設定してトランザクションを送信でき、チップを差し引いた余剰分は返金されます。
+ロンドンアップグレードで[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559)が導入されたことで、トランザクションフィーの仕組みは従来のガス代オークションよりも複雑になりましたが、ガス代の予測がしやすくなり、結果的にトランザクションフィー市場がより効率的になるというメリットがあります。 ユーザーはガスの市場価格(`baseFeePerGas`)以上の金額を支払うことなく、トランザクションの実行に支払う`maxFeePerGas`を設定してトランザクションを送信でき、チップを差し引いた余剰分は返金されます。
 
 EIP-1559 とそのメリットについて説明するビデオ:
 
 <YouTube id="MGemhK9t44Q" />
 
-より正確な情報は、 [EIP-1559 の仕様](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md)をご覧ください。
+より正確な情報は、 [EIP-1559 の仕様](https://eips.ethereum.org/EIPS/eip-1559)をご覧ください。
 
 [EIP-1559 リソース](https://hackmd.io/@timbeiko/1559-resources)でさらに詳細情報を調べる。
 
@@ -123,7 +123,7 @@ EIP-1559 とそのメリットについて説明するビデオ:
 
 ## ガス代削減への取り組み {#initiatives-to-reduce-gas-costs}
 
-イーサリアムの[スケーラビリティ・アップグレード](/upgrades/)は、最終的にいくつかのガス代の問題を解決し、ひいてはプラットフォームが毎秒数千のトランザクションを処理し、グローバルにスケールアップできるはずです。
+イーサリアムの[スケーラビリティ・アップグレード](/roadmap/)は、最終的にいくつかのガス代の問題を解決し、ひいてはプラットフォームが毎秒数千のトランザクションを処理し、グローバルにスケールアップできるはずです。
 
 レイヤー 2 のスケーリングは、ガス代、ユーザーエクスペリエンス、スケーラビリティを大幅に向上させるための主要なイニシアチブです。 [レイヤー 2 スケーリングの詳細](/developers/docs/scaling/#layer-2-scaling)
 
@@ -146,7 +146,6 @@ ETH をより安く送れるようにガス代を節約したい場合は、次�
 ## 参考文献 {#further-reading}
 
 - [イーサリアムガスの説明](https://defiprime.com/gas)
-- [イーサリアムは価格上昇に伴い、使用料も高くなるのか？](https://docs.ethhub.io/questions-about-ethereum/is-ethereum-more-expensive-to-use-as-price-rises/)
 - [スマートコントラクトのガス消費量の削減](https://medium.com/coinmonks/8-ways-of-reducing-the-gas-consumption-of-your-smart-contracts-9a506b339c0a)
 - [プルーフ・オブ・ステークとプルーフ・オブ・ワークの比較](https://blockgeeks.com/guides/proof-of-work-vs-proof-of-stake/)
 

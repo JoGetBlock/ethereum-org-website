@@ -450,7 +450,7 @@ Ad esempio, un utente malevolo potrebbe pompare artificialmente il prezzo a pron
 
 Il requisito minimo per evitare la manipolazione degli oracoli è utilizzare una rete di oracoli decentralizzati che richieda le informazioni da fonti multiple per evitare singoli punti di errore. In gran parte dei casi, gli oracoli decentralizzati contengono incentivi criptoeconomici integrati per incoraggiare i nodi dell'oracolo a segnalare le informazioni corrette, rendendoli più sicuri rispetto agli oracoli centralizzati.
 
-Se prevedi di interrogare un oracolo sulla catena per conoscere i prezzi dei beni, valuta di utilizzarne uno che implementi un meccanismo di prezzo medio ponderato per il tempo (TWAP). Un [oracolo TWAP](https://docs.uniswap.org/protocol/V2/concepts/core-concepts/oracles) interroga il prezzo di un bene in due momenti differenti (che puoi modificare) e calcola il prezzo a pronti a seconda della media ottenuta. La scelta di periodi di tempo più lunghi protegge il tuo protocollo dalla manipolazione dei prezzi poiché i grandi ordini eseguiti di recente non possono influire sui prezzi dei beni.
+Se prevedi di interrogare un oracolo sulla catena per conoscere i prezzi dei beni, valuta di utilizzarne uno che implementi un meccanismo di prezzo medio ponderato per il tempo (TWAP). Un [oracolo TWAP](https://docs.uniswap.org/contracts/v2/concepts/core-concepts/oracles) interroga il prezzo di un bene in due momenti differenti (che puoi modificare) e calcola il prezzo a pronti a seconda della media ottenuta. La scelta di periodi di tempo più lunghi protegge il tuo protocollo dalla manipolazione dei prezzi poiché i grandi ordini eseguiti di recente non possono influire sui prezzi dei beni.
 
 ## Risorse di sicurezza dei contratti intelligenti per sviluppatori {#smart-contract-security-resources-for-developers}
 
@@ -462,7 +462,11 @@ Se prevedi di interrogare un oracolo sulla catena per conoscere i prezzi dei ben
 
 - **[Servizi di controllo dei contratti intelligenti](/developers/docs/smart-contracts/testing/#smart-contract-auditing-services)**: _elenco di organizzazioni che forniscono servizi di controllo dei contratti intelligenti per progetti di sviluppo per Ethereum._
 
-- **[Piattaforme di bug bounty](https://ethereum.org/en/developers/docs/smart-contracts/testing/#bug-bounty-platforms)**: _piattaforme per coordinare le ricompense per la caccia ai bug e ricompensare la divulgazione responsabile delle vulnerabilità critiche nei contratti intelligenti._
+- **[Piattaforme di bug bounty](/developers/docs/smart-contracts/testing/#bug-bounty-platforms)**: _piattaforme per coordinare le ricompense per la caccia ai bug e ricompensare la divulgazione responsabile delle vulnerabilità critiche nei contratti intelligenti._
+
+- **[Fork Checker](https://forkchecker.hashex.org/)**: _uno strumento online gratuito per verificare tutte le informazioni disponibili riguardanti un contratto diramato._
+
+- **[ABI Encoder](https://abi.hashex.org/)**: _un servizio online gratuito per la codifica delle funzioni e degli argomenti del costruttore del tuo contratto in Solidity._
 
 ### Strumenti per monitorare i contratti intelligenti {#smart-contract-monitoring-tools}
 
@@ -474,17 +478,49 @@ Se prevedi di interrogare un oracolo sulla catena per conoscere i prezzi dei ben
 
 - **[OpenZeppelin Defender Admin](https://docs.openzeppelin.com/defender/admin)**: _interfaccia per gestire l'amministrazione dei contratti intelligenti, inclusi i controlli di accesso, gli aggiornamenti e l'interruzione._
 
-- **[Gnosis Safe](https://gnosis.io/safe/)**: _portafoglio del contratto intelligente eseguito su Ethereum, che richiede un numero minimo di persone per approvare una transazione prima che possa verificarsi (M di N)._
+- **[Safe](https://safe.global/)**: _portafoglio del contratto intelligente eseguito su Ethereum, che richiede un numero minimo di persone per approvare una transazione prima che possa verificarsi (M di N)._
 
 - **[Contratti OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/)**: _librerie dei contratti per implementare funzionalità amministrative, inclusa la proprietà del contratto, aggiornamenti, controlli di accesso, governance, interruzioni e altro._
 
-### Pubblicazioni di vulnerabilità ed exploit noti dei contratti intelligenti {#common-smart contract-vulnerabilities-and-exploits}
+### Servizi di controllo dei contratti intelligenti {#smart-contract-auditing-services}
+
+- **[ConsenSys Diligence](https://consensys.net/diligence/)**: _servizio di controllo dei contratti intelligenti che aiuta i progetti sull'ecosistema della blockchain ad assicurare che i loro protocolli siano pronti al lancio e creati per proteggere gli utenti._
+
+- **[CertiK](https://www.certik.com/)**: _società di sicurezza Blockchain pionieristica nell'uso della tecnologia di verifica formale all'avanguardia sui contratti intelligenti e sulle reti blockchain._
+
+- **[Trail of Bits](https://www.trailofbits.com/)**: _società di cybersicurezza che combina la ricerca sulla sicurezza con una mentalità da utente malevolo per ridurre i rischi e fortificare il codice._
+
+- **[PeckShield](https://peckshield.com/)**: _società di sicurezza della blockchain che offre prodotti e servizi per la sicurezza, la privacy e l'usabilità dell'intero ecosistema blockchain._
+
+- **[QuantStamp](https://quantstamp.com/)**: _servizio di controllo che facilita l'adozione mainstream della tecnologia della blockchain attraverso servizi di sicurezza e valutazione dei rischi._
+
+- **[OpenZeppelin](https://www.openzeppelin.com/security-audits)**: _società di sicurezza dei contratti intelligenti che fornisce controlli di sicurezza per i sistemi distribuiti_
+
+- **[Runtime Verification](https://runtimeverification.com/)**: _società di sicurezza specializzata nella modellazione formale e nella verifica dei contratti intelligenti._
+
+- **[Hacken](https://hacken.io)**: _Controllore della cybersicurezza in Web3 che porta un approccio a 360 gradi alla sicurezza della blockchain._
+
+- **[](https://nethermind.io/smart-contracts-audits)**: _servizi di controllo in Solidity e Carico che garantiscono l'integrità dei contratti intelligenti e la sicurezza degli utenti nell'ecosistema Ethereum e Starknet._
+
+- **[HashEx](https://hashex.org/)**: _HashEx è incentrata sul controllo della blockchain e dei controlli intelligenti allo scopo di garantire la sicurezza delle criptovalute, fornendo servizi come lo sviluppo di contratti intelligenti, test di penetrazione o consulenza sulla blockchain._
+
+- **[Code4rena](https://code4rena.com/)**: _Piattaforma di controllo competitiva che incentiva gli esperti di sicurezza dei contratti intelligenti a trovare le vulnerabilità e ad aiutare a rendere il Web3 più sicuro._
+
+### Piattaforme di bug bounty {#bug-bounty-platforms}
+
+- **[Immunefi](https://immunefi.com/)**: _piattaforma di bug bounty per contratti intelligenti e progetti di DeFi, in cui i ricercatori revisionano il codice, divulgano le vulnerabilità, vengono pagati e rendono le criptovalute più sicure._
+
+- **[HackerOne](https://www.hackerone.com/)**: _piattaforma di coordinamento delle vulnerabilità e di bug bounty che connette le aziende ai tester di penetrazione e ai ricercatori sulla cybersicurezza._
+
+- **[HackenProof](https://hackenproof.com/)**: _piattaforma esperta di bug bounty per progetti di criptovalute (DeFi, contratti intelligenti, portafogli, CEX e altro), in cui dei professionisti della sicurezza forniscono servizi di triage e i ricercatori sono pagati per segnalazioni di bug rilevanti e verificate._
+
+### Pubblicazioni di vulnerabilità e sfruttamenti noti dei contratti intelligenti {#common-smart-contract-vulnerabilities-and-exploits}
 
 - **[ConsenSys: attacchi noti ai contratti intelligenti](https://consensys.github.io/smart-contract-best-practices/attacks/)**: _spiegazione per principianti delle vulnerabilità più significative dei contratti, con esempi di codice per gran parte dei casi._
 
-- **[Registro SWC](https://swcregistry.io/)**: _elenco curato di elementi di Enumerazione delle debolezze comuni (CWE) che si applicano ai contratti intelligenti di Ethereum._
+- **[Registro SWC](https://swcregistry.io/)**: _elenco curato di elementi di enumerazione delle debolezze comuni (CWE) che si applicano ai contratti intelligenti di Ethereum._
 
-- **[Rekt](https://rekt.news/)**: _pubblicazione aggiornata regolarmente di violazioni ed exploit cripto ad alto profilo, con report postumi dettagliati._
+- **[Rekt](https://rekt.news/)**: _pubblicazione aggiornata regolarmente di violazioni e sfruttamenti di alto profilo delle criptovalute, con report postumi dettagliati._
 
 ### Sfide per imparare sulla sicurezza dei contratti intelligenti {#challenges-for-learning-smart-contract-security}
 
@@ -510,10 +546,10 @@ Se prevedi di interrogare un oracolo sulla catena per conoscere i prezzi dei ben
 
 - [Come scrivere contratti intelligenti sicuri](/developers/tutorials/secure-development-workflow/)
 
-- [Come usare Slither per trovare i bug nei contratti intelligenti](/developers/tutorials/how-to-use-slither-to-find-smart-contract-bugs/)
+- [Come usare Slither per trovare i bug dello Smart Contract](/developers/tutorials/how-to-use-slither-to-find-smart-contract-bugs/)
 
 - [Come usare Manticore per trovare bug nei contratti intelligenti](/developers/tutorials/how-to-use-manticore-to-find-smart-contract-bugs/)
 
-- [Linee guida sulla sicurezza dei contratti intelligenti](/developers/tutorials/smart-contract-security-guidelines/)
+- [Linee guida di sicurezza per gli Smart Contract](/developers/tutorials/smart-contract-security-guidelines/)
 
 - [Come integrare in sicurezza il tuo contratto dei token con token arbitrari](/developers/tutorials/token-integration-checklist/)

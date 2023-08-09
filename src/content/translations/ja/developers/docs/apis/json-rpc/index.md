@@ -22,7 +22,7 @@ JSON-RPC API を介してイーサリアムクライアントと直接やり取�
 
 このページでは、主にイーサリアムの実行クライアントで使用される JSON-RPC API について説明します。 しかし、コンセンサスクライアントには、ユーザーがノードについての情報のクエリを行える RPC API が用意されており、ビーコンブロック、ビーコンの状態、その他のコンセンサス関連の情報を直接ノードにリクエストできます。 この API については 、[ビーコン API のウェブページ](https://ethereum.github.io/beacon-APIs/#/)に記載されています。
 
-内部 API は、ノード内のクライアント間通信にも使用されます。 つまり、コンセンサスクライアントと実行クライアントとの間のデータ交換を可能にします。 これは「Engine API」と呼ばれており、仕様は[Github](https://github.com/ethereum/execution-apis/blob/main/src/engine/specification.md)で入手できます。
+内部 API は、ノード内のクライアント間通信にも使用されます。 つまり、コンセンサスクライアントと実行クライアントとの間のデータ交換を可能にします。 これは「Engine API」と呼ばれており、仕様は[Github](https://github.com/ethereum/execution-apis/blob/main/src/engine/common.md)で参照できます。
 
 ## 実行クライアントの仕様 {#spec}
 
@@ -75,6 +75,8 @@ JSON-RPC API を介してイーサリアムクライアントと直接やり取�
 - `HEX String` - 整数のブロック番号
 - `String "earliest"` - 最も古い/始まりのブロック
 - `String "latest"` - 最も新しいマイニング済みブロック
+- `String "safe"` - 最も新しい安全な先頭ブロック
+- `String "finalized"` - 最も新しい確定済みブロック
 - `String "pending"` - 保留中の状態/トランザクション
 
 ## 使用例
@@ -265,7 +267,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 
 ### eth_protocolVersion {#eth_protocolversion}
 
-現在のイーサリアムプロトコルのバージョンを返します。
+現在のイーサリアムプロトコルのバージョンを返します。 このメソッドは、[Geth では利用できないこと](https://github.com/ethereum/go-ethereum/pull/22064#issuecomment-788682924)に注意してください。
 
 **パラメータ**
 
@@ -484,7 +486,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id
 **パラメータ**
 
 1. `DATA`、20 バイト - 残高を確認するアドレス
-2. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+2. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 ```js
 params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1", "latest"]
@@ -515,7 +517,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x407
 
 1. `DATA`、20 バイト - ストレージのアドレス
 2. `QUANTITY` - ストレージの位置 (整数)
-3. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+3. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 **戻り値**
 
@@ -581,7 +583,7 @@ curl -X POST --data '{"jsonrpc":"2.0", "method": "eth_getStorageAt", "params": [
 **パラメータ**
 
 1. `DATA`、20 バイト - アドレス
-2. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+2. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 ```js
 params: [
@@ -642,7 +644,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByHa
 
 **パラメータ**
 
-1. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+1. `QUANTITY|TAG` - ブロックの番号(整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 ```js
 params: [
@@ -681,7 +683,7 @@ params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 
 **戻り値**
 
-`QUANTITY` - このブロック内のアンクルの数 (整数)
+`QUANTITY` - このブロック内のアンクルの数(整数)
 
 **例**
 
@@ -702,7 +704,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleCountByBlockHash","p
 
 **パラメータ**
 
-1. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列"latest"、"earliest" 、"pending"のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+1. `QUANTITY|TAG` - ブロックの番号(整数)、または文字列"latest"、"earliest" 、"pending"のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 ```js
 params: [
@@ -734,7 +736,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleCountByBlockNumber",
 **パラメータ**
 
 1. `DATA`、20 バイト - アドレス
-2. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+2. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 ```js
 params: [
@@ -919,7 +921,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendRawTransaction","params"
 - `value`: `QUANTITY` - (オプション) このトランザクションで送信された価値 (整数)
 - `data`: `DATA` - (オプション) メソッド署名とエンコードされたパラメータのハッシュ。 詳細については、[Solidity のドキュメントのイーサリアムコントラクト ABI](https://docs.soliditylang.org/en/latest/abi-spec.html)を参照してください
 
-2. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+2. `QUANTITY|TAG` - ブロック番号 (整数)、もしくは文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 
 **戻り値**
 
@@ -1046,7 +1048,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0
 
 **パラメータ**
 
-1. `QUANTITY|TAG` - ブロック番号 (整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+1. `QUANTITY|TAG` - ブロックの番号(整数)、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 2. `Boolean` - `true`の場合は、完全なトランザクションオブジェクトを返します。 `false`の場合は、トランザクションのハッシュのみを返します
 
 ```js
@@ -1159,7 +1161,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockHashAnd
 
 **パラメータ**
 
-1. `QUANTITY|TAG` - ブロック番号、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+1. `QUANTITY|TAG` - ブロックの番号、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 2. `QUANTITY` - トランザクションのインデックスの位置
 
 ```js
@@ -1191,7 +1193,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockNumberA
 1. `DATA`、32 バイト - トランザクションのハッシュ
 
 ```js
-params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
+params: ["0x85d995eba9763907fdf35cd2034144dd9d53ce32cbec21349d4b12823c6860c5"]
 ```
 
 **戻り値** `Object` - トランザクションレシートのオブジェクト、またはレシートが見つからなかった場合は`null`
@@ -1202,36 +1204,44 @@ params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 - `blockNumber`: `QUANTITY` - このトランザクションが組み込まれていたブロックの番号
 - `from`: `DATA`、20 バイト - 送信者のアドレス
 - `to`: `DATA`、20 バイト - 受信者のアドレス。 コントラクト作成時のトランザクションは null
-- `cumulativeGasUsed`：`QUANTITY` - ブロック内でこのトランザクションを実行する際に使用されたガスの総量
+- `cumulativeGasUsed`：`QUANTITY` - ブロック内でこのトランザクションの実行時に使用されたガスの総量
+- `effectiveGasPrice` : `QUANTITY` - ガスユニットごとに支払われるベースフィーとチップの合計
 - `gasUsed`: `QUANTITY` - この特定のトランザクションのみで使用されたガスの量
-- `contractAddress`: `DATA`、20 バイト - コントラクト作成時のトランザクションの場合は作成されたコントラクトのアドレス、その他の場合は`null`
-- `logs`: `Array` - このトランザクションによって生成されたログオブジェクトの配列
-- `logsBloom`: `DATA`、256 バイト - 関連ログを迅速に取得するためのライトクライアント用のブルームフィルター。 また、以下の*いずれか*も返します
-- `root` : `DATA`、32 バイト - トランザクション後の状態ルート (Byzantium より前)
+- `contractAddress`: `DATA`、20 バイト - コントラクト作成のトランザクションの場合は作成されたコントラクトのアドレス、その他の場合は`null`
+- `logs`: `Array` - このトランザクションが生成したログオブジェクトの配列
+- `logsBloom`: `DATA`、256 バイト - 関連ログを迅速に取得するためのライトクライアント用のブルームフィルター。
+- `type`: `DATA` - トランザクションタイプの整数、`0x00`でレガシートランザクション、 `0x01`でアクセスリストタイプ, `0x02`で動的フィー。 また、以下の*いずれか*も返します
+- `root` : `DATA`、32 バイト - トランザクション後の状態ルート(ビザンチウム以前)
 - `status`: `QUANTITY` - `1` (成功)、または`0` (失敗)
 
 **例**
 
 ```js
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionReceipt","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
-// Result
+// リクエスト
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionReceipt","params":["0x85d995eba9763907fdf35cd2034144dd9d53ce32cbec21349d4b12823c6860c5"],"id":1}'
+// 結果
 {
-"id":1,
-"jsonrpc":"2.0",
-"result": {
-     transactionHash: '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238',
-     transactionIndex:  '0x1', // 1
-     blockNumber: '0xb', // 11
-     blockHash: '0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b',
-     cumulativeGasUsed: '0x33bc', // 13244
-     gasUsed: '0x4dc', // 1244
-     contractAddress: '0xb60e8dd61c5d32be8058bb8eb970870f07233155', // or null, if none was created
-     logs: [{
-         // logs as returned by getFilterLogs, etc.
-     }, ...],
-     logsBloom: "0x00...0", // 256 byte bloom filter
-     status: '0x1'
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "blockHash":
+      "0xa957d47df264a31badc3ae823e10ac1d444b098d9b73d204c40426e57f47e8c3",
+    "blockNumber": "0xeff35f",
+    "contractAddress": null, // 作成された場合はアドレスの文字列
+    "cumulativeGasUsed": "0xa12515",
+    "effectiveGasPrice": "0x5a9c688d4",
+    "from": "0x6221a9c005f6e47eb398fd867784cacfdcfff4e7",
+    "gasUsed": "0xb4c8",
+    "logs": [{
+      // getFilterLogsなどによって返されるログ
+    }],
+    "logsBloom": "0x00...0", // 256 byte bloom filter
+    "status": "0x1",
+    "to": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "transactionHash":
+      "0x85d995eba9763907fdf35cd2034144dd9d53ce32cbec21349d4b12823c6860c5",
+    "transactionIndex": "0x66",
+    "type": "0x2"
   }
 }
 ```
@@ -1271,7 +1281,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getUncleByBlockHashAndIndex"
 
 **パラメータ**
 
-1. `QUANTITY|TAG` - ブロック番号、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block-parameter)を参照してください
+1. `QUANTITY|TAG` - ブロックの番号、または文字列`"latest"`、`"earliest"`、`"pending"`のいずれか。[デフォルトのブロックパラメータ](/developers/docs/apis/json-rpc/#default-block)を参照してください
 2. `QUANTITY` - アンクルのインデックスの位置
 
 ```js
@@ -1643,7 +1653,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterLogs","params":["0x
 - `toBlock`: `QUANTITY|TAG` - (オプション、デフォルト: `"latest"`) ブロック番号 (整数) 。 `"latest"` (最後にマイニングされたブロック)。`"pending"`、`"earliest"` (まだマイニングされていないトランザクション) のいずれか
 - `address`: `DATA|Array`、20 バイト - (オプション) ログの生成元となるコントラクトアドレス、またはアドレスのリスト
 - `topics`: `Array of DATA`、- (オプション) 32 バイトの`DATA`トピックの配列。 トピックは順序に依存します。 各トピックは「or」オプションの DATA 配列にすることも可能
-- `blockhash`: `DATA`、32 バイト - (オプション、**実装予定**) EIP-234 が追加されたことにより、`blockHash`が新たなフィルターオプションになります。これは、返されるログを 32 バイトのハッシュ`blockHash`を持つ単一のブロックに制限します。 `blockHash`を使用することは、`fromBlock`と`toBlock`に`blockHash`のハッシュのブロック番号を指定することと同等です。 `blockHash`がフィルター条件にある場合、`fromBlock`と`toBlock`は使用できません
+- `blockhash`: `DATA`、32 バイト - (オプション、**実装予定**) EIP-234 が追加されたことにより、`blockHash`が新たなフィルターオプションになります。これは、返されるログを 32 バイトのハッシュ`blockHash`を持つ単一のブロックに制限します。 `blockHash`を使用することは、`fromBlock`と`toBlock`に`blockHash`のハッシュのブロック番号を指定することと同等です。 `blockHash`がフィルター条件にある場合、`fromBlock`と`toBlock`は使用できません。
 
 ```js
 params: [
@@ -2216,14 +2226,12 @@ contract Multiply7 {
 まず、HTTP RPC インターフェースが有効になっていることを確認します。 つまり、Geth の起動時に`--http`フラグを設定します。 この例では、プライベート開発チェーン上の Geth ノードを使用します。 このアプローチを使用する際には、本物のネットワーク上の Ether は必要ありません。
 
 ```bash
-
-geth --http --dev --mine --miner.threads 1 --unlock 0 console 2>>geth.log
-
+geth --http --dev console 2>>geth.log
 ```
 
 これにより、HTTP RPC インターフェースが`http://localhost:8545`で開始します。
 
-[curl](https://curl.haxx.se/download.html)を使用してコインベースアドレスと残高を取得することにより、インターフェースが実行されていることを確認できます。 例で示されているデータは、ローカルノードによって異なります。ご注意ください。 これらのコマンドを試す場合は、2 番目の curl リクエストの request パラメータの値を、1 番目の curl リクエストから返された result パラメータに置き換えてください。
+[curl](https://curl.se)を使用して Coinbase アドレスと残高を取得することにより、インターフェースが実行されていることを確認できます。 例で示されているデータは、ローカルノードによって異なります。ご注意ください。 これらのコマンドを試す場合は、2 番目の curl リクエストの request パラメータの値を、1 番目の curl リクエストから返された result パラメータに置き換えてください。
 
 ```bash
 curl --data '{"jsonrpc":"2.0","method":"eth_coinbase", "id":1}' -H "Content-Type: application/json" localhost:8545
