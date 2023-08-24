@@ -1,0 +1,14 @@
+---
+title: How to Connect to Ethereum (ETH) Node? Explained by GetBlock
+description: Here’s the shortest explanation of how GetBlock connects dApps to Ethereum mainnet. In this video, the connection to Ethereum shared node will be displayed.
+author: "GetBlock"
+tags: ["RPC", "defi", "video" "web3.js", "alchemy", "Node", "smart contracts", "infura"]
+skill: beginner
+lang: en
+published: 2023-08-23
+source: youtube.com
+sourceUrl: https://www.youtube.com/watch?v=NYGpLFLFzFI&t=7s
+---
+Here's a quick overview of how GetBlock links dApps to Ethereum mainnet. Check out the video to see how to connect to an Ethereum shared node.
+
+GetBlock, a top-notch blockchain API provider, offers a safe and dependable connection to public nodes on Etereum, Binance Smart Chain, Polygon, Bitcoin and other 50+ networks. It's perfect for things like trading bots, dApps, decentralized exchanges (DEXes) and many other use-cases.
